@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UnionSafe141 Safety Tools</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="logo-wrap">
+      <div class="logo-mark">US141</div>
+      <div>
+        <p class="eyebrow">UnionSafe141.org</p>
+        <h1>Safety Tools Dashboard</h1>
+        <p class="hero-text">Professional, practical tools built for frontline safety decisions, hazard reporting, PPE awareness, heat risk, and incident response.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <section class="top-grid">
+      <article class="card feature-card" id="osha-reference-card">
+        <div class="card-label">Reference</div>
+        <h2>OSHA Reference</h2>
+        <p>Select a topic to see the OSHA standard and a plain-language explanation.</p>
+        <label class="field-label" for="oshaTopic">Safety topic</label>
+        <select id="oshaTopic" class="input"></select>
+        <div id="oshaReferenceResult" class="result-box"></div>
+      </article>
+
+      <article class="card feature-card" id="osha-check-card">
+        <div class="card-label">Quick Check</div>
+        <h2>Is This an OSHA Violation?</h2>
+        <p>Answer the questions below to identify whether the condition may need escalation and what standard may apply.</p>
+        <label class="field-label" for="hazardType">What type of issue is it?</label>
+        <select id="hazardType" class="input"></select>
+
+        <label class="check-row"><input type="checkbox" id="employeesExposed" checked /> Employees are exposed or could reasonably be exposed</label>
+        <label class="check-row"><input type="checkbox" id="controlMissing" checked /> Controls are missing, not working, or inconsistent</label>
+        <label class="check-row"><input type="checkbox" id="repeatIssue" /> This has happened before or was previously reported</label>
+        <label class="check-row"><input type="checkbox" id="injuryPotential" checked /> There is realistic injury, illness, or damage potential</label>
+
+        <button class="action-button blue-hover" onclick="runOshaCheck()">Check Concern</button>
+        <div id="oshaCheckResult" class="result-box"></div>
+      </article>
+    </section>
+
+    <section class="tool-grid">
+      <article class="card tool-card">
+        <h2>Report Wording Assistant</h2>
+        <p>Create clear safety report wording focused on facts, contributing factors, and corrective action.</p>
+        <label class="field-label">Task being performed</label>
+        <input id="reportTask" class="input" value="pushback / aircraft movement" />
+        <label class="field-label">What created pressure or risk?</label>
+        <input id="reportIssue" class="input" value="staffing was short and the crew had overlapping tasks" />
+        <label class="field-label">Safety hazard</label>
+        <input id="reportHazard" class="input" value="SOP steps were rushed and a safety check could have been missed" />
+        <label class="field-label">Outcome</label>
+        <input id="reportOutcome" class="input" value="near miss / no injury" />
+        <button class="action-button green-hover" onclick="generateReport()">Generate Wording</button>
+        <div id="reportResult" class="result-box"></div>
+      </article>
+
+      <article class="card tool-card">
+        <h2>PPE Requirement Tool</h2>
+        <p>Pick a job type and conditions to create a quick PPE checklist.</p>
+        <label class="field-label">Job type</label>
+        <select id="ppeJob" class="input"></select>
+        <div class="mini-grid">
+          <label class="check-row"><input type="checkbox" id="ppeHeat" /> Heat</label>
+          <label class="check-row"><input type="checkbox" id="ppeCold" /> Cold</label>
+          <label class="check-row"><input type="checkbox" id="ppeChemical" /> Chemical</label>
+          <label class="check-row"><input type="checkbox" id="ppeDust" /> Dust</label>
+        </div>
+        <button class="action-button orange-hover" onclick="generatePpe()">Create PPE Checklist</button>
+        <div id="ppeResult" class="result-box"></div>
+      </article>
+
+      <article class="card tool-card">
+        <h2>Heat Index + Work/Rest Tool</h2>
+        <p>Estimate heat stress risk and create a field-ready recommendation.</p>
+        <label class="field-label">Temperature °F</label>
+        <input id="heatTemp" class="input" type="number" value="92" />
+        <label class="field-label">Humidity %</label>
+        <input id="heatHumidity" class="input" type="number" value="55" />
+        <label class="field-label">Workload</label>
+        <select id="heatWorkload" class="input">
+          <option>Light</option>
+          <option>Moderate</option>
+          <option selected>Heavy</option>
+        </select>
+        <button class="action-button red-hover" onclick="calculateHeat()">Calculate Heat Risk</button>
+        <div id="heatResult" class="result-box"></div>
+      </article>
+
+      <article class="card tool-card">
+        <h2>Freeze the Scene Guide</h2>
+        <p>A step-by-step incident scene checklist for injuries, near misses, equipment failures, and damage events.</p>
+        <div id="freezeChecklist"></div>
+        <button class="action-button purple-hover" onclick="resetFreezeChecklist()">Reset Checklist</button>
+        <div id="freezeResult" class="result-box small-result"></div>
+      </article>
+
+      <article class="card tool-card contact-card">
+        <h2>Interested in This Tool?</h2>
+        <p>Share your name, email, and organization if you want updates, training information, or future access options. This is not mandatory.</p>
+        <label class="field-label">Name <span class="optional">optional</span></label>
+        <input id="contactName" class="input" placeholder="Your name" />
+        <label class="field-label">Email <span class="optional">optional</span></label>
+        <input id="contactEmail" class="input" placeholder="your@email.com" />
+        <label class="field-label">Organization <span class="optional">optional</span></label>
+        <input id="contactOrg" class="input" placeholder="Local, station, company, or group" />
+        <label class="field-label">Message <span class="optional">optional</span></label>
+        <textarea id="contactMessage" class="input textarea" placeholder="Tell us what you are interested in..."></textarea>
+        <button class="action-button teal-hover" onclick="submitInterest()">Submit Interest</button>
+        <div id="contactThankYou" class="thank-you" aria-live="polite"></div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="sticky-disclaimer">
+    ⚠️ <strong>Safety Disclaimer:</strong> This tool is for safety support and education only. It does not replace OSHA regulations, company policy, union agreements, airport rules, or medical/legal guidance. Always verify and follow official procedures.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
