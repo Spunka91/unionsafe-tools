@@ -18,3 +18,14 @@ function runPpe(){let list=[...ppeByJob[val('ppeJob')]];if(document.getElementBy
 function runHeat(){let T=Number(val('heatTemp')),R=Number(val('heatHumidity'));let hi=Math.round(-42.379+2.04901523*T+10.14333127*R-.22475541*T*R-.00683783*T*T-.05481717*R*R+.00122874*T*T*R+.00085282*T*R*R-.00000199*T*T*R*R);let adjusted=hi+(val('heatWorkload')==='Moderate'?4:val('heatWorkload')==='Heavy'?8:0);let guide=adjusted>=105?'High Risk — Increase cool-down breaks, rotate workers, monitor symptoms, provide shade/cooling, and consider stopping or modifying work if controls are not effective.':adjusted>=95?'Caution — Use water, rest, shade, acclimatization, buddy checks, and supervisor monitoring. Increase breaks for heavy work or direct sun.':'Lower Flag — Continue hydration, routine breaks, and symptom awareness. Conditions can change quickly.';document.getElementById('heatTitle').innerText=`Estimated Heat Index: ${hi}°F`;document.getElementById('heatOutput').innerText=`Heat Index / Work-Rest Field Check\n\nTemperature: ${T}°F\nHumidity: ${R}%\nEstimated Heat Index: ${hi}°F\nWorkload: ${val('heatWorkload')}\n\nRecommendation: ${guide}\n\nReminder: Consider direct sun, hot pavement, aircraft heat, PPE, poor airflow, overtime, staffing shortages, and acclimatization.`}
 function renderFreeze(){let list=document.getElementById('freezeList');list.innerHTML='';freezeSteps.forEach((s,i)=>{let b=document.createElement('button');b.className='step '+(checked.includes(i)?'done':'');b.innerText=(checked.includes(i)?'✓':'○')+` Step ${i+1}: ${s}`;b.onclick=()=>{checked=checked.includes(i)?checked.filter(x=>x!==i):[...checked,i];renderFreeze()};list.appendChild(b)});document.getElementById('freezeOutput').innerText=`Freeze the Scene Checklist\n\n${freezeSteps.map((s,i)=>`${checked.includes(i)?'[x]':'[ ]'} ${i+1}. ${s}`).join('\n')}`}
 function resetFreeze(){checked=[];renderFreeze()}runOsha();runReport();runPpe();runHeat();renderFreeze();runStandards();
+.disclaimer-box {
+  background-color: #b91c1c; /* strong red */
+  color: #ffffff;
+  border-left: 6px solid #7f1d1d;
+  padding: 14px 18px;
+  margin: 30px auto;
+  max-width: 900px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
