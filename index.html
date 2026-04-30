@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UnionSafe Tools</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-wrap">
+      <img src="logo.png" alt="UnionSafe Logo" class="logo" />
+      <div>
+        <p class="kicker">UnionSafe141.org</p>
+        <h1>UnionSafe Tools</h1>
+        <p class="subtitle">Real tools for real safety decisions.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-card">
+      <h2>Built for the frontline.</h2>
+      <p>Use these tools to identify hazards, document safety concerns, strengthen reporting, and protect yourself and your coworkers.</p>
+      <p class="tagline">See it. Document it. Prevent it.</p>
+    </section>
+
+    <section class="dashboard-grid two-col">
+      <div class="tool-card osha-ref-card">
+        <div class="card-label">OSHA Reference</div>
+        <h2>Find a likely OSHA reference</h2>
+        <p>Type any safety concern, condition, or task. Example: wet floor, tug hit aircraft, dust, noise, heat, PPE, chemical smell.</p>
+        <textarea id="oshaRefInput" placeholder="Type the concern here..."></textarea>
+        <button class="btn red" onclick="generateOshaReference()">Find Reference</button>
+        <div id="oshaRefOutput" class="output"></div>
+      </div>
+
+      <div class="tool-card osha-check-card">
+        <div class="card-label">OSHA Violation Check</div>
+        <h2>Is this an OSHA violation?</h2>
+        <p>Type what you see. The tool will give a practical field assessment and possible standard to review.</p>
+        <textarea id="oshaViolationInput" placeholder="Example: wet floor in work area with no warning signs..."></textarea>
+        <button class="btn blue" onclick="checkOshaViolation()">Check Concern</button>
+        <div id="oshaViolationOutput" class="output"></div>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <div class="tool-card">
+        <div class="card-label">GSAP / Safety Report</div>
+        <h2>Suggested GSAP / Safety Concern Verbiage</h2>
+        <p>Enter the event in your own words. The tool will help create clear, fact-based reporting language.</p>
+        <textarea id="gsapInput" placeholder="Example: tug contacted aircraft during repositioning..."></textarea>
+        <button class="btn red" onclick="generateGsapWording()">Create Suggested Wording</button>
+        <div id="gsapOutput" class="output"></div>
+      </div>
+
+      <div class="tool-card">
+        <div class="card-label">Injury Reporting</div>
+        <h2>Suggested Injury Reporting Language</h2>
+        <p>Use your own words. This tool helps document truthful work-related facts clearly: task, exposure, symptoms, body part, time, location, and witnesses.</p>
+        <textarea id="injuryInput" placeholder="Example: while working outside in high heat, I became dizzy and nauseated..."></textarea>
+        <button class="btn blue" onclick="generateInjuryWording()">Create Injury Language</button>
+        <div id="injuryOutput" class="output"></div>
+      </div>
+
+      <div class="tool-card">
+        <div class="card-label">PPE / Exposure</div>
+        <h2>PPE & Exposure Guidance</h2>
+        <p>Type any condition: haboob, construction dust, chemical odor, wet ramp, noise, heat, cold, glycol, FOD, etc.</p>
+        <textarea id="ppeInput" placeholder="Type the condition or exposure here..."></textarea>
+        <button class="btn red" onclick="generatePpeGuidance()">Get PPE Guidance</button>
+        <div id="ppeOutput" class="output"></div>
+      </div>
+
+      <div class="tool-card">
+        <div class="card-label">Heat Safety</div>
+        <h2>Heat Concern Language</h2>
+        <p>Type the conditions and symptoms. Example: temperature, workload, direct sun, dizziness, cramping, nausea.</p>
+        <textarea id="heatInput" placeholder="Describe heat conditions or symptoms..."></textarea>
+        <button class="btn blue" onclick="generateHeatGuidance()">Create Heat Guidance</button>
+        <div id="heatOutput" class="output"></div>
+      </div>
+
+      <div class="tool-card">
+        <div class="card-label">Freeze the Scene</div>
+        <h2>Incident Scene Checklist</h2>
+        <div class="checklist">
+          <label><input type="checkbox"> Stop work and protect people from immediate danger.</label>
+          <label><input type="checkbox"> Call emergency response if injury or serious symptoms exist.</label>
+          <label><input type="checkbox"> Secure the area with cones, tape, barricades, or a posted person.</label>
+          <label><input type="checkbox"> Do not move equipment or evidence unless life safety requires it.</label>
+          <label><input type="checkbox"> Identify witnesses and preserve photos, equipment IDs, records, and messages.</label>
+          <label><input type="checkbox"> Assign follow-up ownership and a corrective action date.</label>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="card-label">Stay Connected</div>
+        <h2>Request Updates / Provide Feedback</h2>
+        <p>This opens a prepared email to UnionSafe141. The user must press send in their email app.</p>
+        <input id="contactName" placeholder="Name (optional)" />
+        <input id="contactEmail" placeholder="Email (optional)" />
+        <input id="contactOrg" placeholder="Organization / Local / Station (optional)" />
+        <select id="mailingList">
+          <option value="Not answered">Do you want to be on the mailing list?</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+        <textarea id="contactMessage" placeholder="Feedback, tool idea, or safety topic..."></textarea>
+        <button class="btn red" onclick="submitFeedback()">Create Email Submission</button>
+        <button class="btn secondary" onclick="copyFeedback()">Copy Submission</button>
+        <div id="contactOutput" class="output"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-disclaimer">
+    ⚠️ <strong>Safety Disclaimer:</strong> This tool is for safety support and education only. It does not replace OSHA regulations, company policy, union agreements, airport rules, or medical/legal guidance. Always verify and follow official procedures.
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
