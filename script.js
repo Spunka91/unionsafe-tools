@@ -1,3 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-  alert("SCRIPT IS LOADING");
+  const form = document.getElementById("contactForm");
+
+  if (!form) {
+    alert("FORM NOT FOUND");
+    return;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    alert("FORM SUBMIT INTERCEPTED");
+  });
 });
