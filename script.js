@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     data.append("mailing_list", form.mailing_list.checked ? "Yes" : "No");
     data.append("message", form.message.value);
 
-    fetch("https://script.google.com/macros/s/AKfycbwYxk-n5C7LnhtT3g1CTEX3HxoH-PSBK8xVYC5VHLw7CzWJFzBq0k6FjwPeDcWK6pqo/exec", {
+    fetch(https://script.google.com/macros/s/AKfycbwRNhBxPdep1HjRQ1acPONWaFlgMxNc7n5Kuj-HCViHpRpFMqfs_XCZCwzK6_x2cRr_/exec, {
       method: "POST",
       mode: "no-cors",
       body: data
