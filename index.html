@@ -88,22 +88,20 @@
       <h2>Share Feedback or Request Follow-Up</h2>
       <p>Use this form to provide feedback, request more information, or ask to be included in future UnionSafe updates.</p>
 
-      <form id="contactForm" action="https://formsubmit.co/unionsafe141@gmail.com" method="POST">
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_subject" id="emailSubject" value="UnionSafe Tools Contact Submission" />
-        <input type="hidden" name="_next" value="https://spunka91.github.io/unionsafe-tools/?submitted=true" />
+      <form id="contactForm">
+  <input name="name" placeholder="Name (optional)">
+  <input name="email" placeholder="Email (optional)">
+  <input name="organization" placeholder="Organization (optional)">
 
-        <div class="form-grid">
-          <label>Name <span>(optional)</span><input id="contactName" name="name" type="text" placeholder="Your name" /></label>
-          <label>Email <span>(optional)</span><input id="contactEmail" name="email" type="email" placeholder="Your email" /></label>
-          <label>Organization <span>(optional)</span><input id="contactOrg" name="organization" type="text" placeholder="Local, station, company, or group" /></label>
-          <label class="checkbox-line"><input id="mailingList" name="mailing_list" type="checkbox" value="Yes" /> Do you want to be on the mailing list?</label>
-        </div>
+  <label>
+    <input type="checkbox" name="mailing_list">
+    Do you want to be on the mailing list?
+  </label>
 
-        <label>Message<textarea id="contactMessage" name="message" placeholder="Type your message, feedback, or request here..."></textarea></label>
-        <button class="btn blue" type="submit">Submit Feedback</button>
-      </form>
+  <textarea name="message" placeholder="Message"></textarea>
+
+  <button type="submit">Submit</button>
+</form>
       <div id="thankYou" class="thank-you hidden">Thank you. Your submission has been received and will be forwarded to UnionSafe141.</div>
     </section>
 
