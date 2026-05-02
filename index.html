@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UnionSafe Tools</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <img src="logo.png" alt="UnionSafe logo" class="logo" />
+      <div>
+        <p class="eyebrow">UnionSafe141.org</p>
+        <h1>UnionSafe Safety Tools</h1>
+        <p class="tagline">Real tools for real safety decisions — identify hazards, document concerns, and protect each other.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro-card">
+      <h2>Frontline Safety Support</h2>
+      <p>This dashboard helps members turn real-world situations into clear safety communication. Type the condition in your own words and use the feedback to help recognize risk, report accurately, and prevent the next injury or event.</p>
+    </section>
+
+    <section class="tool-grid">
+      <article class="tool-card featured-card">
+        <div class="card-top red">
+          <span class="badge">1</span>
+          <h2>OSHA Reference Finder</h2>
+        </div>
+        <p class="help">Type any hazard or condition. Example: wet floor, dust, noise, unknown spill, tug issue.</p>
+        <textarea id="oshaRef" placeholder="Type the condition here..."></textarea>
+        <button class="btn red-btn" onclick="oshaRefCheck()">Find OSHA Reference</button>
+        <div class="result" id="oshaRefResult">Your OSHA reference guidance will appear here.</div>
+      </article>
+
+      <article class="tool-card featured-card">
+        <div class="card-top blue">
+          <span class="badge">2</span>
+          <h2>Is This an OSHA Violation?</h2>
+        </div>
+        <p class="help">Describe what you see. The tool will flag likely safety concerns and possible standards.</p>
+        <textarea id="oshaViolation" placeholder="Example: wet floor in bagroom, unknown liquid, broken tug brake..."></textarea>
+        <button class="btn blue-btn" onclick="oshaViolationCheck()">Check Concern</button>
+        <div class="result" id="oshaViolationResult">Your OSHA concern feedback will appear here.</div>
+      </article>
+
+      <article class="tool-card">
+        <div class="card-top navy">
+          <span class="badge">3</span>
+          <h2>GSAP / Safety Report Wording</h2>
+        </div>
+        <p class="help">Describe the event. This produces fact-based wording without language that can discourage acceptance.</p>
+        <textarea id="gsapText" placeholder="Example: tug contacted aircraft, wingwalker lost sight line, beltloader contacted door..."></textarea>
+        <button class="btn navy-btn" onclick="gsapWording()">Create Suggested Wording</button>
+        <div class="result" id="gsapResult">Suggested GSAP/safety report wording will appear here.</div>
+      </article>
+
+      <article class="tool-card">
+        <div class="card-top red">
+          <span class="badge">4</span>
+          <h2>Injury Reporting Language</h2>
+        </div>
+        <p class="help">Describe the injury or symptoms in your own words. This helps organize factual work-related details.</p>
+        <textarea id="injuryText" placeholder="Example: heat symptoms after ramp work, slip on wet floor, strain while lifting..."></textarea>
+        <button class="btn red-btn" onclick="injuryLanguage()">Create Injury Language</button>
+        <div class="result" id="injuryResult">Suggested factual injury reporting language will appear here.</div>
+      </article>
+
+      <article class="tool-card">
+        <div class="card-top blue">
+          <span class="badge">5</span>
+          <h2>Exposure / PPE Check</h2>
+        </div>
+        <p class="help">Open input for anything encountered: haboob, construction dust, chemical odor, unknown liquid, noise, heat, cold.</p>
+        <textarea id="ppeText" placeholder="Describe exposure or condition..."></textarea>
+        <button class="btn blue-btn" onclick="ppeCheck()">Check Exposure / PPE</button>
+        <div class="result" id="ppeResult">Exposure and PPE guidance will appear here.</div>
+      </article>
+
+      <article class="tool-card">
+        <div class="card-top navy">
+          <span class="badge">6</span>
+          <h2>Should I Stop Work?</h2>
+        </div>
+        <p class="help">Type the situation. The tool gives a practical go/no-go style safety response.</p>
+        <textarea id="stopWorkText" placeholder="Example: lightning nearby, unknown spill, no wingwalker, visibility blocked..."></textarea>
+        <button class="btn navy-btn" onclick="stopWorkCheck()">Check Stop-Work Concern</button>
+        <div class="result" id="stopWorkResult">Stop-work guidance will appear here.</div>
+      </article>
+
+      <article class="tool-card">
+        <div class="card-top red">
+          <span class="badge">7</span>
+          <h2>Time Pressure Risk Check</h2>
+        </div>
+        <p class="help">Use this when work is rushed, staffing is thin, or duties are overlapping.</p>
+        <textarea id="timePressureText" placeholder="Describe the time pressure or staffing issue..."></textarea>
+        <button class="btn red-btn" onclick="timePressureCheck()">Check Risk</button>
+        <div class="result" id="timePressureResult">Time-pressure feedback will appear here.</div>
+      </article>
+
+      <article class="tool-card">
+        <div class="card-top blue">
+          <span class="badge">8</span>
+          <h2>Near Miss Builder</h2>
+        </div>
+        <p class="help">Turn “almost happened” events into clear, useful near-miss reports.</p>
+        <textarea id="nearMissText" placeholder="Example: almost hit wingtip, tug lost power, pedestrian crossed behind equipment..."></textarea>
+        <button class="btn blue-btn" onclick="nearMissBuilder()">Build Near Miss</button>
+        <div class="result" id="nearMissResult">Near-miss wording will appear here.</div>
+      </article>
+
+      <article class="tool-card full-card">
+        <div class="card-top navy">
+          <span class="badge">9</span>
+          <h2>Who Do I Report This To?</h2>
+        </div>
+        <p class="help">Describe the issue and get practical routing: supervisor, safety concern, GSAP/ASAP, injury report, environmental, JSC/APC, or emergency response.</p>
+        <textarea id="routeText" placeholder="Describe the issue you need to report..."></textarea>
+        <button class="btn navy-btn" onclick="reportRoute()">Find Reporting Route</button>
+        <div class="result" id="routeResult">Reporting guidance will appear here.</div>
+      </article>
+
+      <article class="tool-card full-card">
+        <div class="card-top red">
+          <span class="badge">10</span>
+          <h2>Freeze the Scene Tool</h2>
+        </div>
+        <p class="help">Use this after an accident, injury, aircraft damage, equipment contact, spill, or serious near miss.</p>
+        <textarea id="freezeText" placeholder="Describe what happened or what scene needs to be protected..."></textarea>
+        <button class="btn red-btn" onclick="freezeSceneTool()">Create Freeze-the-Scene Steps</button>
+        <div class="result" id="freezeResult">Freeze-the-scene guidance will appear here.</div>
+      </article>
+
+    </section>
+
+    <section class="contact-card">
+      <h2>Contact / Feedback</h2>
+      <p>Use this form to send feedback, request updates, or share interest in future UnionSafe tools. All fields are required.</p>
+      <form id="contactForm" action="https://formsubmit.co/unionsafe141@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="UnionSafe Tools Submission" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <div class="form-grid">
+          <label>Name<input name="name" placeholder="Your name" required /></label>
+          <label>Email<input type="email" name="email" placeholder="your@email.com" required /></label>
+          <label>Organization / Station<input name="organization" placeholder="Local, station, airline, or group" required /></label>
+        </div>
+        <label class="checkline"><input type="checkbox" name="mailing_list" value="Yes" required /> Do you want to be on the mailing list?</label>
+        <label>Message<textarea name="message" placeholder="Tell us what you need or what feedback you have..." required></textarea></label>
+        <button class="btn blue-btn submit-btn" type="submit">Submit Feedback</button>
+        <p class="small-note">Submissions are sent to unionsafe141@gmail.com through FormSubmit.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="sticky-disclaimer">
+    ⚠️ <strong>Safety Disclaimer:</strong> This tool supports safety education and documentation. It does not replace OSHA regulations, company policy, union agreements, airport rules, medical guidance, or legal advice. Always verify and follow official procedures.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
