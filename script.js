@@ -169,3 +169,25 @@ document.addEventListener("DOMContentLoaded", () => {
   setupAdminButtons();
   renderAdmin();
 });
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const formData = {
+    name: this.name.value,
+    email: this.email.value,
+    organization: this.organization.value,
+    mailing_list: this.mailing_list.checked ? "Yes" : "No",
+    message: this.message.value
+  };
+
+  fetch("PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE", {
+    method: "POST",
+    body: JSON.stringify(formData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(() => {
+    alert("Thank you! Your submission has been received.");
+    this.reset();
+  });
+});
