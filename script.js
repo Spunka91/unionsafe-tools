@@ -180,7 +180,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
     message: this.message.value
   };
 
-  fetch("PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE", {
+  fetch(https://script.google.com/macros/s/AKfycbwYxk-n5C7LnhtT3g1CTEX3HxoH-PSBK8xVYC5VHLw7CzWJFzBq0k6FjwPeDcWK6pqo/exec, {
     method: "POST",
     body: JSON.stringify(formData),
     headers: {
