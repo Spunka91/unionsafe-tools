@@ -89,16 +89,16 @@
       <p>Use this form to provide feedback, request more information, or ask to be included in future UnionSafe updates.</p>
 
       <form id="contactForm">
-  <input name="name" placeholder="Name (optional)">
-  <input name="email" placeholder="Email (optional)">
-  <input name="organization" placeholder="Organization (optional)">
+  <input name="name" placeholder="Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input name="organization" placeholder="Organization" required>
 
   <label>
-    <input type="checkbox" name="mailing_list">
+    <input type="checkbox" name="mailing_list" required>
     Do you want to be on the mailing list?
   </label>
 
-  <textarea name="message" placeholder="Message"></textarea>
+  <textarea name="message" placeholder="Describe the situation" required></textarea>
 
   <button type="submit">Submit</button>
 </form>
