@@ -1,0 +1,261 @@
+:root {
+  --red: #b91c1c;
+  --blue: #123b7a;
+  --blue2: #1d4ed8;
+  --white: #ffffff;
+  --light: #f4f7fb;
+  --dark: #111827;
+  --yellow: #facc15;
+  --gray: #64748b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  padding-bottom: 96px;
+}
+
+.site-header {
+  background: linear-gradient(135deg, var(--blue), #0f172a 60%, var(--red));
+  color: white;
+  padding: 22px 16px;
+  border-bottom: 5px solid var(--red);
+}
+
+.header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  background: white;
+  border-radius: 16px;
+  padding: 6px;
+  border: 3px solid rgba(255,255,255,.75);
+}
+
+h1 { margin: 0; font-size: clamp(28px, 5vw, 46px); }
+.site-header p { margin: 8px 0 0; color: #dbeafe; font-size: 17px; }
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 22px 14px;
+}
+
+.intro-card,
+.tool-card {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(15,23,42,.08);
+  border: 1px solid #e5e7eb;
+}
+
+.intro-card {
+  padding: 22px;
+  margin-bottom: 20px;
+  border-left: 8px solid var(--red);
+}
+
+.intro-card h2,
+.tool-card h2 { color: var(--blue); margin-top: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.top-grid .tool-card:first-child { border-top: 6px solid var(--blue); }
+.top-grid .tool-card:nth-child(2) { border-top: 6px solid var(--red); }
+
+.tool-card { padding: 20px; }
+
+.tool-card p,
+.intro-card p {
+  color: #4b5563;
+  line-height: 1.45;
+}
+
+textarea,
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea { min-height: 110px; resize: vertical; }
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 11px 15px;
+  margin: 8px 6px 8px 0;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .15s ease, background .15s ease;
+}
+
+.btn:hover { transform: translateY(-2px); }
+.btn-blue { background: var(--blue2); }
+.btn-blue:hover { background: #0f2f66; }
+.btn-red { background: var(--red); }
+.btn-red:hover { background: #7f1d1d; }
+.btn-gray { background: var(--gray); }
+.btn-gray:hover { background: #334155; }
+
+.output {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border-left: 5px solid var(--blue2);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  min-height: 42px;
+}
+
+.output:empty { display: none; }
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  font-weight: 700;
+}
+
+.hidden-frame {
+  display: none;
+  width: 0;
+  height: 0;
+  border: 0;
+}
+
+#contactForm {
+  display: grid;
+  gap: 10px;
+}
+
+.data-card {
+  border-left-color: var(--blue);
+}
+
+.data-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.stats-row div {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.stats-row strong {
+  display: block;
+  color: var(--blue);
+  font-size: 28px;
+}
+
+.stats-row span {
+  color: #475569;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+th, td {
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px;
+  vertical-align: top;
+  font-size: 14px;
+}
+
+th {
+  background: var(--blue);
+  color: white;
+}
+
+tr:nth-child(even) td { background: #f8fafc; }
+
+.sticky-disclaimer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--yellow);
+  color: #1f2937;
+  border-top: 4px solid #b45309;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  z-index: 1000;
+  box-shadow: 0 -6px 18px rgba(0,0,0,.12);
+}
+
+@media (max-width: 800px) {
+  .header-inner { flex-direction: column; text-align: center; }
+  .grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: 1fr; }
+  body { padding-bottom: 138px; }
+  .sticky-disclaimer { font-size: 12px; }
+}
+
+
+/* Hidden private tracking panel. It only appears when opened with ?admin=union */
+.admin-only {
+  display: none;
+}
+body.admin-mode .admin-only {
+  display: block;
+}
+body.admin-mode::before {
+  content: "Private Admin View";
+  display: block;
+  background: #123b7a;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-weight: 700;
+}
