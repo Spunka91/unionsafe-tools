@@ -1,116 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UnionSafe Tools</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <img src="logo.png" alt="UnionSafe Logo" class="logo" />
-      <div>
-        <h1>UnionSafe Safety Tools</h1>
-        <p>Real tools for real safety decisions — built for frontline workers.</p>
-      </div>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="intro-card">
-      <h2>Safety Tools Dashboard</h2>
-      <p>Use these tools to identify hazards, reference OSHA standards, create clearer safety reports, document injury details, evaluate PPE needs, and help protect yourself and your coworkers.</p>
-    </section>
+<h1>UnionSafe Tools</h1>
 
-    <section class="grid top-grid">
-      <article class="tool-card">
-        <h2>OSHA Reference</h2>
-        <p>Type any safety concern and receive likely OSHA reference areas to review.</p>
-        <textarea id="oshaRefInput" placeholder="Example: wet floor, tug hit aircraft, construction dust, noise, heat, chemical smell"></textarea>
-        <button class="btn btn-blue" onclick="generateOshaReference()">Get OSHA Reference</button>
-        <div id="oshaRefOutput" class="output"></div>
-      </article>
+<div class="dashboard">
 
-      <article class="tool-card">
-        <h2>Is This an OSHA Violation?</h2>
-        <p>Describe the condition. This tool gives practical feedback and possible standards to review.</p>
-        <textarea id="oshaViolationInput" placeholder="Example: wet floor near bagroom walkway with employees walking through"></textarea>
-        <button class="btn btn-red" onclick="checkOshaViolation()">Check Concern</button>
-        <div id="oshaViolationOutput" class="output"></div>
-      </article>
-    </section>
+  <div class="box">
+    <h3>OSHA Reference</h3>
+    <textarea id="oshaRef"></textarea>
+    <button onclick="oshaRef()">Check</button>
+    <p id="oshaRefResult"></p>
+  </div>
 
-    <section class="grid">
-      <article class="tool-card">
-        <h2>GSAP / Safety Report Wording</h2>
-        <p>Describe what happened in your own words. The response will stay factual and safety-focused.</p>
-        <textarea id="gsapInput" placeholder="Example: tug contacted aircraft during repositioning, unclear communication, congested area, equipment concern"></textarea>
-        <button class="btn btn-blue" onclick="generateGsapWording()">Generate Suggested Wording</button>
-        <div id="gsapOutput" class="output"></div>
-      </article>
+  <div class="box">
+    <h3>OSHA Violation Check</h3>
+    <textarea id="oshaCheck"></textarea>
+    <button onclick="oshaCheck()">Check</button>
+    <p id="oshaCheckResult"></p>
+  </div>
 
-      <article class="tool-card">
-        <h2>Injury Reporting Language</h2>
-        <p>Describe the injury or symptoms in your own words. This helps organize facts around work-related exposure or activity.</p>
-        <textarea id="injuryInput" placeholder="Example: heat-related symptoms while working outside loading aircraft in high temperature"></textarea>
-        <button class="btn btn-red" onclick="generateInjuryWording()">Generate Injury Language</button>
-        <div id="injuryOutput" class="output"></div>
-      </article>
+  <div class="box">
+    <h3>Exposure / PPE</h3>
+    <textarea id="ppe"></textarea>
+    <button onclick="ppeCheck()">Check</button>
+    <p id="ppeResult"></p>
+  </div>
 
-      <article class="tool-card">
-        <h2>PPE / Exposure Tool</h2>
-        <p>Type any task, exposure, or condition and receive possible PPE and controls to consider.</p>
-        <textarea id="ppeInput" placeholder="Example: haboob, construction dust, glycol smell, loud equipment, chemical splash, heat"></textarea>
-        <button class="btn btn-blue" onclick="generatePpeGuidance()">Get PPE Guidance</button>
-        <div id="ppeOutput" class="output"></div>
-      </article>
+  <div class="box">
+    <h3>Should I Stop Work?</h3>
+    <textarea id="stopWork"></textarea>
+    <button onclick="stopWorkCheck()">Check</button>
+    <p id="stopWorkResult"></p>
+  </div>
 
-      <article class="tool-card">
-        <h2>Heat Risk Support</h2>
-        <p>Enter conditions or symptoms and receive practical heat-safety guidance.</p>
-        <textarea id="heatInput" placeholder="Example: 98 degrees, high humidity, worker dizzy, ramp work, direct sun"></textarea>
-        <button class="btn btn-red" onclick="generateHeatGuidance()">Get Heat Guidance</button>
-        <div id="heatOutput" class="output"></div>
-      </article>
+  <div class="box">
+    <h3>Time Pressure Risk</h3>
+    <textarea id="timePressure"></textarea>
+    <button onclick="timePressureCheck()">Check</button>
+    <p id="timePressureResult"></p>
+  </div>
 
-      <article class="tool-card">
-        <h2>Freeze the Scene Guide</h2>
-        <p>Use this after an accident, injury, equipment event, or near miss.</p>
-        <button class="btn btn-blue" onclick="generateFreezeGuide()">Show Steps</button>
-        <div id="freezeOutput" class="output"></div>
-      </article>
+  <div class="box">
+    <h3>Near Miss Builder</h3>
+    <textarea id="nearMiss"></textarea>
+    <button onclick="nearMissCheck()">Build</button>
+    <p id="nearMissResult"></p>
+  </div>
 
-      <article class="tool-card">
-        <h2>Stay Connected</h2>
-        <p>Submit your contact information or feedback. This form sends directly to unionsafe141@gmail.com through FormSubmit.</p>
-        <form id="contactForm" action="https://formsubmit.co/unionsafe141@gmail.com" method="POST" target="hiddenSubmitFrame" onsubmit="return handleContactSubmit();">
-          <input type="hidden" name="_subject" value="UnionSafe Tools Contact Submission" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-          <input id="contactName" name="name" type="text" placeholder="Name" required />
-          <input id="contactEmail" name="email" type="email" placeholder="Email" required />
-          <input id="contactOrg" name="organization" type="text" placeholder="Organization / Local / Station" required />
-          <select id="mailingList" name="mailing_list" required>
-            <option value="">Do you want to be on the mailing list?</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-          <textarea id="contactMessage" name="message" placeholder="Message or feedback" required></textarea>
-          <button class="btn btn-red" type="submit">Submit Information</button>
-          <button class="btn btn-blue" type="button" onclick="copyContactInfo()">Copy Submission Backup</button>
-        </form>
-        <iframe name="hiddenSubmitFrame" class="hidden-frame" title="hidden form submit"></iframe>
-        <div id="contactOutput" class="output"></div>
-      </article>
-    </section>
-  </main>
+  <div class="box">
+    <h3>Who Do I Report This To?</h3>
+    <textarea id="report"></textarea>
+    <button onclick="reportCheck()">Check</button>
+    <p id="reportResult"></p>
+  </div>
 
-  <footer class="sticky-disclaimer">
-    ⚠️ <strong>Safety Disclaimer:</strong> This tool is for safety support and education only. It does not replace OSHA regulations, company policy, union agreements, airport rules, or medical/legal guidance. Always verify and follow official procedures.
-  </footer>
+</div>
 
-  <script src="script.js"></script>
+<form id="contactForm">
+  <input name="name" placeholder="Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input name="organization" placeholder="Organization" required>
+
+  <label>
+    <input type="checkbox" name="mailing_list" required>
+    Do you want to be on the mailing list?
+  </label>
+
+  <textarea name="message" placeholder="Describe situation" required></textarea>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script src="script.js"></script>
+
 </body>
 </html>
